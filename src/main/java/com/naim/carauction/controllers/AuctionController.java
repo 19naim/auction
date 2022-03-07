@@ -1,12 +1,10 @@
-package com.naim.carauction.controller;
+package com.naim.carauction.controllers;
 
 import com.naim.carauction.entities.AuctionItem;
 import com.naim.carauction.services.AuctionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +24,12 @@ public class AuctionController {
     @GetMapping("/{id}")
     public Optional<AuctionItem> getOneItem(@PathVariable Long id) {
         return auctionService.getOneItem(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<Boolean> postNewAuction(@RequestBody AuctionItem auctionItem) {
+        boolean isSaved = auctionService.postNewAuction(auctionItem);
+        return ResponseEntity.ok(isSaved);
     }
 
     @GetMapping("/search/{name}")

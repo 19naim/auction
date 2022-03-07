@@ -25,4 +25,8 @@ public class AuctionItem {
     private int initial_price;
     private long start_date;
     private long stop_date;
+    @OneToOne
+    @JoinColumn(name = "owner_id", updatable=false, insertable = false)
+    private User owner;
+
 }
