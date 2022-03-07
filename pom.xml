@@ -9,16 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.naim</groupId>
-	<artifactId>auction</artifactId>
+	<artifactId>carauction</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>auction</name>
+	<name>carauction</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

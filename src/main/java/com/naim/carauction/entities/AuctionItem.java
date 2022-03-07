@@ -1,4 +1,4 @@
-package com.naim.auction.entities;
+package com.naim.carauction.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,8 +25,4 @@ public class AuctionItem {
     private int initial_price;
     private long start_date;
     private long stop_date;
-    @OneToOne
-    @JoinColumn(name = "owner_id", updatable=false, insertable = false)
-    private User owner;
-
 }

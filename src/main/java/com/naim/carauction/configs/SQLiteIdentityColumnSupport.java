@@ -1,4 +1,4 @@
-package com.naim.auction.configs;
+package com.naim.carauction.configs;
 
 import org.hibernate.dialect.identity.IdentityColumnSupportImpl;
 import org.springframework.data.mapping.MappingException;

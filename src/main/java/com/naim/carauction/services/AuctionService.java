@@ -1,9 +1,7 @@
-package com.naim.auction.services;
+package com.naim.carauction.services;
 
-import com.naim.auction.dtos.SocketDTO;
-import com.naim.auction.entities.AuctionItem;
-import com.naim.auction.repositories.AuctionRepo;
-import com.naim.auction.repositories.BidRepo;
+import com.naim.carauction.entities.AuctionItem;
+import com.naim.carauction.repositories.AuctionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +13,6 @@ public class AuctionService {
     @Autowired
     AuctionRepo auctionRepo;
 
-    @Autowired
-    SocketService socketService;
-
-    @Autowired
-    BidRepo bidRepo;
-
     AuctionItem auctionItem;
     public List<AuctionItem> getAllItems() {
         return auctionRepo.findAll();
@@ -28,13 +20,6 @@ public class AuctionService {
 
     public Optional<AuctionItem> getOneItem(Long id) {
         return auctionRepo.findById(id);
-    }
-
-    public boolean postNewAuction(AuctionItem auctionItem) {
-        AuctionItem savedAuction = auctionRepo.save(auctionItem);
-        SocketDTO socketData = new SocketDTO("auction", savedAuction);
-        socketService.sendToAllClient(socketData);
-        return savedAuction.getId() > 0;
     }
 
     public List<AuctionItem> getByItemName(String item_name) {

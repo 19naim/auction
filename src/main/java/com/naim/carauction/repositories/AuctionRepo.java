@@ -1,6 +1,6 @@
-package com.naim.auction.repositories;
+package com.naim.carauction.repositories;
 
-import com.naim.auction.entities.AuctionItem;
+import com.naim.carauction.entities.AuctionItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,4 +1,4 @@
-package com.naim.auction.configs;
+package com.naim.carauction.configs;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -41,3 +41,4 @@ class MyWebMvcConfigurer implements WebMvcConfigurer {
         return dataSourceBuilder.build();
     }
 }
+
