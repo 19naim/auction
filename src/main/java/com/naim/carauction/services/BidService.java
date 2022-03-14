@@ -14,6 +14,9 @@ public class BidService {
     @Autowired
     BidRepo bidRepo;
 
+    @Autowired
+    SocketService socketService;
+
     public List<Bid> getAllBids() {
         return bidRepo.findAll();
     }
@@ -29,6 +32,7 @@ public class BidService {
     public Bid postNewBid(Bid bid) {
         Bid savedBid = bidRepo.save(bid);
         SocketDTO socketData = new SocketDTO("bid", savedBid);
+        socketService.sendToAllClient(socketData);
         return savedBid;
     }
 

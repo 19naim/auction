@@ -16,6 +16,9 @@ public class AuctionService {
     AuctionRepo auctionRepo;
 
     @Autowired
+    SocketService socketService;
+
+    @Autowired
     BidRepo bidRepo;
 
     AuctionItem auctionItem;
@@ -30,6 +33,7 @@ public class AuctionService {
     public boolean postNewAuction(AuctionItem auctionItem) {
         AuctionItem savedAuction = auctionRepo.save(auctionItem);
         SocketDTO socketData = new SocketDTO("auction", savedAuction);
+        socketService.sendToAllClient(socketData);
         return savedAuction.getId() > 0;
     }
 
