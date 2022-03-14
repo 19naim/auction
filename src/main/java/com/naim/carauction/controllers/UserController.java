@@ -87,11 +87,11 @@ public class UserController {
         return "OK";
     }
 
-    /*@PostMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user, HttpServletRequest req) {
         securityLogin(user.getEmail(), user.getPassword(), req);
         return ResponseEntity.ok("ok");
-    }*/
+    }
 
     @GetMapping("/currentuser")
     public ResponseEntity<User> currentUser() {
@@ -109,6 +109,7 @@ public class UserController {
 
     @PostMapping("/auth/register")
     public ResponseEntity<User> register(@RequestBody User user){
+        System.out.println("USER" + user);
         var newuser = userService.registerUser(user.getName(), user.getEmail(), user.getPictureUrl(), user.getPassword());
         return ResponseEntity.ok(newuser);
     }

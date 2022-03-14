@@ -21,10 +21,8 @@ public class SocketService {
 
     @Autowired
     MessageService messageService;
-
     @Autowired
     AuctionService auctionService;
-
     @Autowired
     BidService bidService;
 
@@ -66,9 +64,9 @@ public class SocketService {
         sessions.remove(session);
     }
 
-    public void saveNewMessage(Message message) {
-        messageService.postNewMessage(message);
-    }
+//    public void saveNewMessage(Message message) {
+//        messageService.postNewMessage(message);
+//    }
 
     public void saveNewAuction(AuctionItem auctionItem) {
         auctionService.postNewAuction(auctionItem);
@@ -77,4 +75,5 @@ public class SocketService {
     public void saveNewBid(Bid bid) {
         bidService.postNewBid(bid);
     }
+
 }

@@ -6,6 +6,7 @@ import com.naim.carauction.entities.AuctionItem;
 import com.naim.carauction.entities.Bid;
 import com.naim.carauction.entities.Message;
 import com.naim.carauction.services.SocketService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -19,7 +20,9 @@ public class SocketController extends TextWebSocketHandler {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
+    @Autowired
     private SocketService socketService;
+
     public void setSocketService(SocketService socketService) {
         this.socketService = socketService;
     }
@@ -31,10 +34,10 @@ public class SocketController extends TextWebSocketHandler {
         SocketDTO socketDTO = objectMapper.readValue(message.getPayload(), SocketDTO.class);
 
         switch (socketDTO.action) {
-            case "message":
-                Message msg = convertPayload(socketDTO.payload, Message.class);
-                socketService.saveNewMessage(msg);
-                break;
+//            case "message":
+//                Message msg = convertPayload(socketDTO.payload, Message.class);
+//                socketService.saveNewMessage(msg);
+//                break;
             case "auction":
                 AuctionItem auctionItem = convertPayload(socketDTO.payload, AuctionItem.class);
                 socketService.saveNewAuction(auctionItem);
